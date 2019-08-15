@@ -1,0 +1,50 @@
+<%= form_with(model: job, local: true) do |f| %>
+<% if job.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+  <ul>
+    <% job.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field">
+  <%= f.label :client_id %>
+  <%= f.text_field :client_id %>
+</div>
+
+<div class="field">
+  <%= f.label :contact_id %>
+  <%= f.text_field :contact_id %>
+</div>
+
+<div class="field">
+  <%= f.label :job_title %>
+  <%= f.text_field :job_title %>
+</div>
+
+<div class="links">
+  <p>
+    <%= link_to_add_association 'Add Task', f, :tasks, :class => 'add_fields-task', id: 'add_fields' %>
+  </p>
+</div>
+<div id="tasks-list">
+  <h3> Tasks </h3>
+  <%= f.fields_for :tasks do |task|%>
+  <%= render "task_fields",:f =>task %>
+  <% end %>
+</div>
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>
+
+<script type="text/javascript">
+  $("#add_fields")
+  .data("association-insertion-method", 'append')
+  .data("association-insertion-node", '#tasks-list');
+</script>

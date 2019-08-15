@@ -1,0 +1,13 @@
+<div class="nested-fields">
+<div class="field">
+    <%= f.label :task_title %>
+    <%= f.text_field :task_title, required: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :due_date %>
+    <%= f.date_select :due_date %>
+  </div>
+  <%=link_to_remove_association "remove task", f %>
+</div>
+

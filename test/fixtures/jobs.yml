@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: one
+  contact: one
+  job_title: MyString
+
+two:
+  client: two
+  contact: two
+  job_title: MyString
